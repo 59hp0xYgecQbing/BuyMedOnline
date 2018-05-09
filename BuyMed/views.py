@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse,HttpResponseRedirect
-from .model import Product,Category
+from .models import Product,Category
 
 # Create your views here.
 def product_list(request,category_slug=None):
@@ -12,8 +12,8 @@ def product_list(request,category_slug=None):
 		products=products.filter(category=category)
 	return render(request,
 		'BuyMed/product/list.html',
-		{'category':category
-		'categories':categories
+		{'category':category,
+		'categories':categories,
 		'products':products})
 
 def product_detail(request,id,slug):
